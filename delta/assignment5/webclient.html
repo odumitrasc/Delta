@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>Abusing the HTTP protocol - Example</title>
+</head>
+<body onload="validator()">
+<script>
+	function validator(){
+			if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+				var ajax = new XMLHttpRequest();
+			}
+			else { // code for IE6, IE5
+				var ajax = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			ajax.open('GET', 'wait_for_server', true);
+			ajax.onreadystatechange = function(){
+				if (ajax.readyState == 4 && ajax.status == 200){
+					document.getElementById("response").innerHTML = ajax.responseText;
+				}
+			};
+			ajax.send();
+	}
+</script>
+	<h1>Display data from the Server</h1>
+	The following line changes on the servers command line
+	input: <br>
+	<span id="response" style="color:red">
+		This will be replaced by messages from the server
+	</span>
+</body>
+</html>
