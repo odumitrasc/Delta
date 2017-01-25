@@ -16,13 +16,14 @@ for i in range(numOfVertcies):
 def diameter(graphs):
     diameters = list()
     for graph in graphs:
-        diameters.append(nx.diameter(graph))   
+        diameters.append(nx.diameter(graph))
+        
     return max(diameters)
 
-G = nx.Graph(graph)
+G = nx.DiGraph(graph)
 
 start = time.time()
-connectedComponentsGraphs = list(nx.connected_component_subgraphs(G))
+connectedComponentsGraphs = list(nx.strongly_connected_component_subgraphs(G))
 print("Diameter of the Graph is: " + str(diameter(connectedComponentsGraphs)))
 end = time.time()
 
